@@ -1,0 +1,74 @@
+version: '3.4'
+
+services:
+
+  aiinferencer:
+      image: ${DOCKER_REGISTRY-}aiinferencer:0.1
+      build:
+        context: src/Services/Detections/ai_inferencer
+        dockerfile: Dockerfile
+      depends_on: 
+        - alertsapi-dapr
+        
+  aiinferencer-dapr:
+    image: "daprio/daprd:latest"
+    depends_on:
+      - aiinferencer
+    network_mode: "service:aiinferencer"
+
+  rulesengine: 
+    image: ${DOCKER_REGISTRY-}rulesengine:0.1
+    build:
+      context: .
+      dockerfile: src/Services/Alerts/RulesEngine/Dockerfile
+    depends_on:
+    - mongodb
+
+  rulesengine-dapr:
+    image: "daprio/daprd:latest"
+    depends_on:
+    - rulesengine
+    network_mode: "service:rulesengine"
+
+  framesplitter:
+      image: ${DOCKER_REGISTRY-}framesplitter:0.1
+      depends_on:
+        - aiinferencer-dapr
+
+  framesplitter-dapr:
+    image: "daprio/daprd:latest"
+    depends_on:
+      - framesplitter
+    network_mode: "service:framesplitter"
+
+  alerts-api: 
+    image: ${DOCKER_REGISTRY-}alerts-api:0.1
+    depends_on:
+    - mongodb
+
+  alertsapi-dapr:
+    image: "daprio/daprd:latest"
+    depends_on:
+    - alerts-api
+    network_mode: "service:alerts-api"
+  
+  alerts-ui:
+    image: ${DOCKER_REGISTRY-}alerts-ui:0.1
+    depends_on:
+      - alertsapi-dapr
+
+  alerts-ui-dapr:
+    image: "daprio/daprd:latest"
+    depends_on:
+      - alerts-ui
+    network_mode: "service:alerts-ui"
+
+  mosquitto:
+    hostname: mosquitto
+    container_name: mosquitto_container
+    image: eclipse-mosquitto:1.6.10
+ 
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    hostname: mongo
