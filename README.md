@@ -20,14 +20,17 @@ Create an AI Model for detecting fire & smoke and deploy it as part of the ["MEC
 
 ![image](https://github.com/CESARDELATORRE/wildfire-app-solution-accelerator/assets/1712635/83f19ee2-60ae-42df-80f9-81ac68f62ff4)
 
+## Teams
+
+- **AI/ML team:** AI model training and dataset labeling.
+- **Dev team:** Model inference integration in Docker container. Alert rules implementation, etc.
+- **Story telling and media team:** Story narrative, interviews to the team and video editing.
+
+
 ## Main tasks
 - Find or create a Labeled fire/smoke images Dataset (For Object Detection)
 - Create AI Model for detecting fire & smoke
 - Create custom “Alert Rules” specific for the “wildfire domain”
 
-## Teams
 
-- AI/ML team
-- Video/Images team
-- Devs/Application team
   
