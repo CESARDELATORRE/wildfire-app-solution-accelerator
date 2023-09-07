@@ -2,6 +2,8 @@
 
 As part of the Microsoft Global Hackathon 2023, we want to make a difference and create value/assets around “wildfire detection” based on AI models detecting fire and smoke and generating alerts. 
 
+![image](https://github.com/CESARDELATORRE/wildfire-app-solution-accelerator/assets/1712635/72b2dadb-798c-446c-abb5-25773425aa3d)
+
 We will be building based on the ["MEC Application Solution Accelerator”](https://github.com/Azure/mec-app-solution-accelerator) (Open Source code from our MSFT team), which provides the foundation for comparable scenarios for video analytics.
 
 # Problem or Opportunity
@@ -13,6 +15,8 @@ This solution can be scoped and scaled to read data from live video feeds from D
 ## Main goal
 
 Create an AI Model for detecting fire & smoke and deploy it as part of the ["MEC Application Solution Accelerator”](https://github.com/Azure/mec-app-solution-accelerator) so it can work on an end to end solution consuming videos from any RTSP url (like from drones, robots, etc.) 
+
+![image](https://github.com/CESARDELATORRE/wildfire-app-solution-accelerator/assets/1712635/83f19ee2-60ae-42df-80f9-81ac68f62ff4)
 
 ## Main tasks
 - Find or create a Labeled fire/smoke images Dataset (For Object Detection)
