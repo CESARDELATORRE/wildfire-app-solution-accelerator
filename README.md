@@ -30,6 +30,8 @@ The core of this project is to create an AI Model for detecting fire & smoke and
 - **Dev team:** Model inference integration in Docker container. Alert rules implementation, etc.
 - **Story telling and media team:** Story narrative, interviews to the team and video editing.
 
+** TBD - NEED GitHub user accounts for each member in the hackathon project team **
+
 
 ## Main tasks
 - Find or create a Labeled fire/smoke images Dataset (For Object Detection)
@@ -37,4 +39,53 @@ The core of this project is to create an AI Model for detecting fire & smoke and
 - Create custom “Alert Rules” specific for the “wildfire domain”
 
 
-  
+# Getting Started
+
+## Grab the GitHub repo code
+
+Get the GitHub repo's code:
+
+```powershell
+git clone git@github.com:CESARDELATORRE/wildfire-app-solution-accelerator.git
+```
+
+## Local Docker deployment alternatives (Development and Test environment)
+
+When developing, testing and debugging the MEC application it's easier and more straightforward to deploy into Docker so, for instance, you can debug code with Visual Studio and can easily test the application with just Docker installed without further setup steps as required by Kubernetes.
+
+| | |
+|--------|--------|
+| <img width="140" alt="image" src="https://user-images.githubusercontent.com/1712635/220490921-dc521a14-3f0a-481f-8179-7233a744dbc1.png"> | **Deploy application services to [Docker for Desktop with 'docker compose up'](./docs/DOCKER_COMPOSE_DEPLOYMENT.MD)** |
+| <img width="130" alt="image" src="https://user-images.githubusercontent.com/1712635/220490972-9140e540-3000-47f0-a3c4-4e64b4976266.png"> | **Deploy application services to Docker with [Visual Studio (F5 experience)](./docs/VS_DOCKER_DEPLOYMENT.MD)** |
+| | |
+
+
+## Kubernetes deployment alternatives ("Production" environment)
+
+This sample microservices application can be deployed on most Kubernetes distributions clusters. 
+
+Because we're targeting deployment at the Edge and also development environments, in most cases (unless you need significant process power when scaling out to many video sources/cameras) your Kubernetes clusters will be composed by a single cluster node (like a dev machine environment or light edge environment). 
+
+Refer to the following procedure information pages to learn how to deploy this example application to your selected Kubernetes distribution:
+
+| | |
+|--------|--------|
+| <img width="250" alt="image" src="https://user-images.githubusercontent.com/1712635/220757242-ee4bc4dc-2e70-4718-bcd6-12a800f84669.png"> | **Deploy application services to [local AKS Edge Essentials](/docs/K8S_AKS_EDGE_ESSENTIALS.MD)** |
+| <img width="270" alt="image" src="https://user-images.githubusercontent.com/1712635/220753221-9bcbaf08-8de8-4064-a1ca-3b78e2dceff4.png"> | **Deploy application services to [local Kubernetes in 'Docker Desktop'](/docs/K8S_IN_DOCKER_DESKTOP_DEPLOYMENT.MD)** |
+| <img width="200" alt="image" src="https://user-images.githubusercontent.com/1712635/220753664-79e9c307-54b8-40d3-8702-9b1d64349284.png"> | **Deploy application services to [local MiniKube](/docs/K8S_MINIKUBE_DEPLOYMENT.MD)** |
+| <img width="190" alt="image" src="https://user-images.githubusercontent.com/1712635/220753942-2d66681c-8560-43bb-9ffc-85a787356549.png"> | **Deploy application services to [Azure Kubernetes Services](/docs/K8S_AKS_DEPLOYMENT.md)** in Azure cloud (Testing in the cloud) |
+| | |
+
+# Configurations for easy customization
+
+In order to test your own scenarios you might want to try the following operations even before customizing or forking the application's code:
+
+| | |
+|--------|--------|
+| <img width="70" alt="Camera icon" src="https://user-images.githubusercontent.com/1712635/220493758-47ec3c24-7a29-4e85-8f20-ee141e2f538a.png"> | **[How to provision your own video RTSP feed in the app with configuration](/docs/HOW_TO_PROVISION_NEW_FEED.MD)** |
+| <img width="70" alt="VM icon" src="https://user-images.githubusercontent.com/1712635/220493850-b6391852-78d4-4b53-9dac-841ecdad2551.png"> | **[How to create your own VM in Azure with a RTSP faking a camera](/docs/HOW_TO_CREATE_RTSP_SERVER.MD)** |
+| <img width="80" alt="Model's classes cat dog" src="https://user-images.githubusercontent.com/1712635/220493891-de118a4c-c228-4078-8536-efd5680227a8.png"> | **[How to use your own 'classes' to be detected by the AI model](/docs/HOW_TO_USE_OWN_MODEL_CLASSES.MD)** |
+| <img width="70" alt="Kubernetes scalability icon" src="https://user-images.githubusercontent.com/1712635/220494004-d638e5e0-41e6-4aa7-a004-b85e73418022.png"> | **[How to scale up the number of pods in Kubernetes deployment configuration](/docs/HOW_TO_SCALE_UP_K8S_PODS.MD)** |
+| | |
+
+ 
