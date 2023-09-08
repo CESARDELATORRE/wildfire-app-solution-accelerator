@@ -52,7 +52,9 @@ The core of this project is to create an AI Model for detecting fire & smoke and
 
 #### Train a new Object Detection model for detecting fire and smoke classes. Possible approaches:
 
-- Azure Machine Learning AutoML for computer vision models: AutoML automatically does transfer learning from these foundation object detection models: YOLOv5, ResNet, RetinaNet (multiple trainings trying these foundation models with different hyperparameter combinations)
+**OPTION A: AutoML for computer vision models**
+
+Azure Machine Learning AutoML for computer vision models automatically does transfer learning from these foundation object detection models: YOLOv5, ResNet, RetinaNet (multiple trainings trying these foundation models with different hyperparameter combinations)
 
 AutoML computer vision Tutorials:
       
@@ -60,7 +62,8 @@ https://learn.microsoft.com/en-us/azure/machine-learning/how-to-auto-train-image
       
 https://learn.microsoft.com/en-us/azure/machine-learning/how-to-use-automl-small-object-detect?view=azureml-api-2&tabs=CLI-v2 
 
-- Custom / low level training with PyTorch, etc.
+**OPTION B: Manual and low level model training with PyTorch, etc.**
+
 In case Azure AutoML training was “too generic” for fire detection, these are other alternatives to evaluate (transfer learning performed on a more 'low level’ way):
 
 Examples:
@@ -77,11 +80,11 @@ https://fireecology.springeropen.com/articles/10.1186/s42408-022-00165-0
 
 #### Create a Labeled fire/smoke images Dataset (For Object Detection)
 
-    - OPTION A: Find an existing “fire/smoke" labeled dataset compatible with AutoML models (JSONL format)
+- **OPTION A: Find an existing “fire/smoke" labeled dataset compatible with AutoML models (JSONL format)**
 
-    - OPTION B: Use Azure ML Labeling for creating our own “fire/smoke" labeled dataset
+- **OPTION B: Use Azure ML Labeling for creating our own “fire/smoke" labeled dataset**
 
-        https://learn.microsoft.com/en-us/azure/machine-learning/how-to-create-image-labeling-projects?view=azureml-api-2 
+  https://learn.microsoft.com/en-us/azure/machine-learning/how-to-create-image-labeling-projects?view=azureml-api-2 
 
 **Hackers assigned for this task (Images Dataset research OR dataset creation):**
 - HACKER 1
