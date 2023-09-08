@@ -1,5 +1,12 @@
 # Deploy on Docker ('Visual Studio F5 experience')
 
+**IMPORTANT:** In the current wildfire-app-solution-accelerator, only the project/container "Alerts.RulesEngine" source code is in the Visual Studio project. The rest of the containers work through Visual Studio launch but using the Docker Images specified in "docker-compose.yml" which are published in Docker Hub as public images.
+If you want to debug code from any of the other .NET containers (Alerts.API and Alerts.UI/Dashboard UI), you need to grab the code from the related "MEC Application Solution Accelerator".
+
+Also, the source code for the Python containers (FrameSplitter and AI.Inference) are not included in the VS solution, neither, but using the published inmages in Docker Hub.
+
+## Prerequisites
+
 Make sure you have [installed](https://docs.docker.com/desktop/install/windows-install/) and configured docker in your environment. After that, you can run the below commands from the solution's root directory and get started trying it.
 
 ## Grab the GitHub repo code
