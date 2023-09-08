@@ -130,8 +130,11 @@ Basically, a similar Python code will need to run within the Python code "ai_inf
 
 ### Python: Create a fire/smoke "inference test video" and publish is as a Docker container  
 
-This is a very simple development task. In order to simulate a video camera sending the video for fire and smoke detection, we need to assemble/create a test video with images about landscape, forest, and quite a few images with fire and smoke.
-Once we have that video (i.e. a .MP4 video), we will wrap it within a Docker container that will publish is as an RTSP url, like if it was a real IP camera with a RTSP url. 
+This is a very simple development task. In order to simulate a video camera sending the video for fire and smoke detection, we need to assemble/create a test video with raw images (not labeled) with landscape, forest, and quite a few images with fire and smoke in it.
+
+This video is what will be tested and working on the final application at the edge.
+
+Once we have that video created (i.e. a .MP4 video), we will wrap it within a Docker container that will publish is as an RTSP url, like if it was a real IP camera with a RTSP url. 
 This development is already donde and just needs to be updated with the new video. Check it out here:
 
 https://github.com/CESARDELATORRE/wildfire-app-solution-accelerator/tree/main/rtsp-video-streamer-container
