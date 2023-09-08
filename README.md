@@ -58,11 +58,19 @@ Additionally, we'll need to evolve the "Alerts.RuleEngine" microservice to creat
 
 Azure Machine Learning AutoML for computer vision models automatically does transfer learning from these foundation object detection models: YOLOv5, ResNet, RetinaNet (multiple trainings trying these foundation models with different hyperparameter combinations)
 
-AutoML computer vision Tutorials:
+*AutoML computer vision Tutorials (Learning "How to"):*
       
 https://learn.microsoft.com/en-us/azure/machine-learning/how-to-auto-train-image-models?view=azureml-api-2&tabs=cli   
       
 https://learn.microsoft.com/en-us/azure/machine-learning/how-to-use-automl-small-object-detect?view=azureml-api-2&tabs=CLI-v2 
+
+*AutoML computer vision Jupyter notebooks (Using AML SDK):*
+
+*For training the model (Data Scientists / ML Engineer):*
+[Training an Object Detection model with AutoML](https://github.com/Azure/azureml-examples/blob/main/sdk/python/jobs/automl-standalone-jobs/automl-image-object-detection-task-fridge-items/automl-image-object-detection-task-fridge-items.ipynb)
+
+*For inference with the model and make predictions (Developers / ML Engineer):*
+[Inference model locally with MLFlow](https://github.com/Azure/azureml-examples/blob/main/sdk/python/jobs/automl-standalone-jobs/automl-image-object-detection-task-fridge-items/mlflow-model-local-inference-test.ipynb)
 
 **OPTION B (LAST RESORT): Manual and low level model training with PyTorch, etc.**
 
@@ -105,6 +113,13 @@ Research the code from the "ai_inferencer" microservice in Python so instead of 
 https://github.com/CESARDELATORRE/wildfire-app-solution-accelerator/tree/main/src/Services/Detections/ai_inferencer
 
 Additional information about the end to end solution is available at the ["MEC Application Solution Accelerator" architecture WORD document](https://github.com/CESARDELATORRE/wildfire-app-solution-accelerator/blob/main/docs/Architecture%20and%20Design%20of%20MEC%20Solution%20Accelerator.docx).
+
+Related to how to locally (Python) inference a model that was created with AutoML, research this notebook:
+*For inference with the model and make predictions (Developers / ML Engineer):*
+
+[Inference model locally with MLFlow](https://github.com/Azure/azureml-examples/blob/main/sdk/python/jobs/automl-standalone-jobs/automl-image-object-detection-task-fridge-items/mlflow-model-local-inference-test.ipynb)
+
+Basically, a similar Python code will need to run within the "ai_inferencer" microservice in Python. 
 
 **Hackers assigned for this task (Python development):**
 - HACKER 1
