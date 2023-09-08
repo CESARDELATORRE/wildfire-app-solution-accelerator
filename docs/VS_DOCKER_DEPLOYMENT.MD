@@ -14,7 +14,7 @@ Make sure you have [installed](https://docs.docker.com/desktop/install/windows-i
 Get the GitHub repo's code:
 
 ```powershell
-git clone git@github.com:Azure/mec-app-solution-accelerator.git
+git clone git@github.com:CESARDELATORRE/wildfire-app-solution-accelerator.git
 ```
 
 ## (Optional step) Set the DOCKER_REGISTRY environment variable
