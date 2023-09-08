@@ -121,6 +121,8 @@ About how to locally (Python Docker container) inference a model that was create
 
 Basically, a similar Python code will need to run within the Python code "ai_inferencer" microservice in a Docker container. 
 
+*TIP:* Get started with any example Object Detection model created by AutoML so we can start integrating it in the Solution's Python microservice, so when the final AutoML model is ready, it'll be quick to integrate/deploy it, since it'll be a very similar model from a deployment and inference point of view.
+
 **Hackers assigned for this task (Python development):**
 - HACKER 1
 - HACKER 2
