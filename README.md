@@ -85,6 +85,8 @@ https://fireecology.springeropen.com/articles/10.1186/s42408-022-00165-0
 - **OPTION A: Find an existing “fire/smoke" labeled dataset compatible with AutoML models (JSONL format)**
 If the found training data is in a different format (like, pascal VOC or COCO), we can apply the helper scripts included with the sample notebooks to convert the data to JSONL. Learn more about [How to prepare data for computer vision tasks with automated ML](https://learn.microsoft.com/en-us/azure/machine-learning/how-to-prepare-datasets-for-automl-images?view=azureml-api-2).
 
+*Note: The training data needs to have at least 10 images in order to be able to submit an AutoML job.*
+
 - **OPTION B: Use Azure ML Labeling for creating our own “fire/smoke" labeled dataset**
 
   https://learn.microsoft.com/en-us/azure/machine-learning/how-to-create-image-labeling-projects?view=azureml-api-2 
