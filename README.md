@@ -99,9 +99,9 @@ Research the code from the "ai_inferencer" microservice in Python so instead of 
 
 https://github.com/CESARDELATORRE/wildfire-app-solution-accelerator/tree/main/src/Services/Detections/ai_inferencer
 
-Additional information about the end to end solution is available at the "MEC Application Solution Accelerator" architecture document, here:
+Additional information about the end to end solution is available at the ["MEC Application Solution Accelerator" architecture WORD document](https://github.com/CESARDELATORRE/wildfire-app-solution-accelerator/blob/main/docs/Architecture%20and%20Design%20of%20MEC%20Solution%20Accelerator.docx).
 
-["MEC Application Solution Accelerator" architecture WORD document](https://github.com/CESARDELATORRE/wildfire-app-solution-accelerator/blob/main/docs/Architecture%20and%20Design%20of%20MEC%20Solution%20Accelerator.docx)
+
 
 **Hackers assigned for this task (Python development):**
 - HACKER 1
@@ -114,9 +114,7 @@ Research the code from the "Alerts.RuleEngine" microservice to create new Alerts
 
 https://github.com/CESARDELATORRE/wildfire-app-solution-accelerator/tree/main/src/Services/Alerts/RulesEngine
 
-Additional information about how to create rules and alerts in the "MEC Application Solution Accelerator" architecture document, here:
-
-["MEC Application Solution Accelerator" architecture WORD document](https://github.com/CESARDELATORRE/wildfire-app-solution-accelerator/blob/main/docs/Architecture%20and%20Design%20of%20MEC%20Solution%20Accelerator.docx)
+Additional information about how to create rules and alerts in the ["MEC Application Solution Accelerator" architecture WORD document](https://github.com/CESARDELATORRE/wildfire-app-solution-accelerator/blob/main/docs/Architecture%20and%20Design%20of%20MEC%20Solution%20Accelerator.docx)
 
 **Hackers assigned for this task (C# development):**
 - HACKER 1
