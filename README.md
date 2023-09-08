@@ -1,3 +1,6 @@
+![image](https://github.com/CESARDELATORRE/wildfire-app-solution-accelerator/assets/1712635/8da54974-1eed-438b-b8b0-0a8df3362a51)
+
+
 # Wildfire MEC/Edge Application Solution Accelerator
 
 As part of the Microsoft Global Hackathon 2023, we want to make a difference and create value/assets around “wildfire detection” based on AI models detecting fire and smoke and generating alerts. 
