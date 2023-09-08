@@ -29,6 +29,8 @@ The core of this project is to create an AI Model for detecting fire & smoke and
 
 ![image](https://github.com/CESARDELATORRE/wildfire-app-solution-accelerator/assets/1712635/83f19ee2-60ae-42df-80f9-81ac68f62ff4)
 
+Additionally, we'll need to evolve the "Alerts.RuleEngine" microservice to create new Alerts and new Rules related to fire and smoke detection.
+
 # Sub-Teams
 
 - **AI/ML team:** AI model training and dataset labeling.
@@ -101,12 +103,22 @@ https://github.com/CESARDELATORRE/wildfire-app-solution-accelerator/tree/main/sr
 
 Additional information about the end to end solution is available at the ["MEC Application Solution Accelerator" architecture WORD document](https://github.com/CESARDELATORRE/wildfire-app-solution-accelerator/blob/main/docs/Architecture%20and%20Design%20of%20MEC%20Solution%20Accelerator.docx).
 
-
-
 **Hackers assigned for this task (Python development):**
 - HACKER 1
 - HACKER 2
 - HACKER 3
+
+### Python: Create a fire/smoke test video and publish is as a Docker container  
+
+This is a very simple development task. In order to simulate a video camera sending the video for fire and smoke detection, we need to assemble/create a test video with images about landscape, forest, and quite a few images with fire and smoke.
+Once we have that video (i.e. a .MP4 video), we will wrap it within a Docker container that will publish is as an RTSP url, like if it was a real IP camera with a RTSP url. 
+This development is already donde and just needs to be updated with the new video. Check it out here:
+
+https://github.com/CESARDELATORRE/wildfire-app-solution-accelerator/tree/main/rtsp-video-streamer-container
+
+**Hacker assigned for this task (Python development):**
+- HACKER 1
+- HACKER 2
 
 ### .NET C#: Create custom “Alert Rules” specific for the “wildfire domain” in the "Alert Rules" C# microservice.
 
