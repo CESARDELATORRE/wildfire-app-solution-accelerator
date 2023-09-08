@@ -114,7 +114,7 @@ https://github.com/CESARDELATORRE/wildfire-app-solution-accelerator/tree/main/sr
 
 Additional information about the end to end solution is available at the ["MEC Application Solution Accelerator" architecture WORD document](https://github.com/CESARDELATORRE/wildfire-app-solution-accelerator/blob/main/docs/Architecture%20and%20Design%20of%20MEC%20Solution%20Accelerator.docx).
 
-Related to how to locally (Python) inference a model that was created with AutoML, research this notebook:
+About how to locally (Python Docker container) inference a model that was created with AutoML, research this notebook:
 *For inference with the model and make predictions (Developers / ML Engineer):*
 
 [Inference model locally with MLFlow](https://github.com/Azure/azureml-examples/blob/main/sdk/python/jobs/automl-standalone-jobs/automl-image-object-detection-task-fridge-items/mlflow-model-local-inference-test.ipynb)
