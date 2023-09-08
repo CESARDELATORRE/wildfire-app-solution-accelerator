@@ -83,6 +83,6 @@ In order to test your own scenarios you might want to try the following operatio
 | | |
 |--------|--------|
 | <img width="70" alt="Camera icon" src="https://user-images.githubusercontent.com/1712635/220493758-47ec3c24-7a29-4e85-8f20-ee141e2f538a.png"> | **[How to provision your own video RTSP feed in the app with configuration](/docs/HOW_TO_PROVISION_NEW_FEED.MD)** |
-| <img width="70" alt="VM icon" src="https://user-images.githubusercontent.com/1712635/220493850-b6391852-78d4-4b53-9dac-841ecdad2551.png"> | **[How to create a container with RTSP simulating a camera](/rtsp-video-streamer-container/)** |
+| <img width="140" alt="image" src="https://user-images.githubusercontent.com/1712635/220490921-dc521a14-3f0a-481f-8179-7233a744dbc1.png"> | **[How to create a container with RTSP simulating a camera](/rtsp-video-streamer-container/)** |
 
  
