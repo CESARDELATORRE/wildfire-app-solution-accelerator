@@ -67,6 +67,8 @@ When developing, testing and debugging the MEC application it's easier and more 
 
 ## Kubernetes deployment alternatives ("Production" environment)
 
+**IMPORTANT NOTE: The deployment to KUBERNETES below is related to the MEC Solution Accelerator. For the WILDFIRE ACCELERATOS we will need to change the instructions below when we change the Docker Images names for the AImodel.Infererence microservice and the Alerts-Rules microservice**
+
 This sample microservices application can be deployed on most Kubernetes distributions clusters. 
 
 Because we're targeting deployment at the Edge and also development environments, in most cases (unless you need significant process power when scaling out to many video sources/cameras) your Kubernetes clusters will be composed by a single cluster node (like a dev machine environment or light edge environment). 
