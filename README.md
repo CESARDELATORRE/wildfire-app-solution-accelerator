@@ -52,7 +52,7 @@ The core of this project is to create an AI Model for detecting fire & smoke and
 
 #### Train a new Object Detection model for detecting fire and smoke classes. Possible approaches:
 
-**OPTION A: AutoML for computer vision models**
+**OPTION A (PREFERRED): AutoML for computer vision models**
 
 Azure Machine Learning AutoML for computer vision models automatically does transfer learning from these foundation object detection models: YOLOv5, ResNet, RetinaNet (multiple trainings trying these foundation models with different hyperparameter combinations)
 
@@ -62,7 +62,7 @@ https://learn.microsoft.com/en-us/azure/machine-learning/how-to-auto-train-image
       
 https://learn.microsoft.com/en-us/azure/machine-learning/how-to-use-automl-small-object-detect?view=azureml-api-2&tabs=CLI-v2 
 
-**OPTION B: Manual and low level model training with PyTorch, etc.**
+**OPTION B (LAST RESORT): Manual and low level model training with PyTorch, etc.**
 
 In case Azure AutoML training was “too generic” for fire detection, these are other alternatives to evaluate (transfer learning performed on a more 'low level’ way):
 
