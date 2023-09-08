@@ -163,6 +163,9 @@ Additional information about how to create rules and alerts in the ["MEC Applica
 - Record interviews to the members of the project
 - Edit video and create the final "Project story video" to be provided as our deliverable of the Hackathon.
 
+*TIP:* Include pontential ideas in the story (even when not implemented in the hackathon) such as ability to tag "enemy/fire" here.
+For instance, not just detecting fire/smoke but also sending back the related world-map coordinates coming from drones or robots. That would be very useful for firefighters in order to quickly go to the issue's area.
+
 **Hackers assigned for this tasks:**
 - HACKER 1
 - HACKER 2
