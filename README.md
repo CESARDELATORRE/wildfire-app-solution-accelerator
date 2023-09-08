@@ -1,4 +1,6 @@
-![image](https://github.com/CESARDELATORRE/wildfire-app-solution-accelerator/assets/1712635/a36f8347-95af-453d-bb1e-a12540598827)
+<p align="center">
+  <img src="https://github.com/CESARDELATORRE/wildfire-app-solution-accelerator/assets/1712635/a36f8347-95af-453d-bb1e-a12540598827" alt="Wildfire accelerator logo"/>
+</p>
 
 # Wildfire MEC/Edge Application Solution Accelerator
 
