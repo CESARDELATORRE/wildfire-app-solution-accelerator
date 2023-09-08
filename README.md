@@ -45,16 +45,9 @@ The core of this project is to create an AI Model for detecting fire & smoke and
 
 | | |
 |--------|--------|
-| **AI/ML motion** | - Find or create a Labeled fire/smoke images Dataset (For Object Detection)
-                     - Create/Train AI Model for detecting fire & smoke
-  |
-| **Dev motion** | - Integrate AI Model within the AI.Inference Python microservice
-                   - Create custom “Alert Rules” specific for the “wildfire domain”
-  |
-| **Story motion**| - Create the "Story narrative"
-                    - Record interviews to the members of the project
-                    - Edit video and create the final "Project story video" to be provided as our deliverable of the Hackathon.
-  |
+| **AI/ML motion** | - Find or create a Labeled fire/smoke images Dataset (For Object Detection) - Create/Train AI Model for detecting fire & smoke |
+| **Dev motion** | - Integrate AI Model within the AI.Inference Python microservice - Create custom “Alert Rules” specific for the “wildfire domain” |
+| **Story motion**| - Create the "Story narrative" - Record interviews to the members of the project - Edit video and create the final "Project story video" to be provided as our deliverable of the Hackathon.|
 
 # Getting Started
 
