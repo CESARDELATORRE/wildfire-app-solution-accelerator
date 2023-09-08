@@ -1,5 +1,6 @@
 <p align="center">
   <img src="https://github.com/CESARDELATORRE/wildfire-app-solution-accelerator/assets/1712635/a36f8347-95af-453d-bb1e-a12540598827" alt="Wildfire accelerator logo"/>
+  <img src="[https://github.com/CESARDELATORRE/wildfire-app-solution-accelerator/assets/1712635/a36f8347-95af-453d-bb1e-a12540598827](https://github.com/CESARDELATORRE/wildfire-app-solution-accelerator/assets/1712635/e5fe3edd-c9f4-494d-91c0-0495d808e3a8)" alt="MSFT First Responders logo"/>
 </p>
 
 # Wildfire MEC/Edge Application Solution Accelerator
