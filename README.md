@@ -119,7 +119,7 @@ Related to how to locally (Python) inference a model that was created with AutoM
 
 [Inference model locally with MLFlow](https://github.com/Azure/azureml-examples/blob/main/sdk/python/jobs/automl-standalone-jobs/automl-image-object-detection-task-fridge-items/mlflow-model-local-inference-test.ipynb)
 
-Basically, a similar Python code will need to run within the "ai_inferencer" microservice in Python. 
+Basically, a similar Python code will need to run within the Python code "ai_inferencer" microservice in a Docker container. 
 
 **Hackers assigned for this task (Python development):**
 - HACKER 1
