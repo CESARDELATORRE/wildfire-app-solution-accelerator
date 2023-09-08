@@ -134,7 +134,7 @@ Additional information about how to create rules and alerts in the ["MEC Applica
 - HACKER 3
 
 
-### Create the story video of our Hackathon project
+## Create the story video of our Hackathon project
 
 - Create the "Story narrative"
 - Record interviews to the members of the project
