@@ -83,6 +83,7 @@ https://fireecology.springeropen.com/articles/10.1186/s42408-022-00165-0
 #### Create a Labeled fire/smoke images Dataset (For Object Detection)
 
 - **OPTION A: Find an existing “fire/smoke" labeled dataset compatible with AutoML models (JSONL format)**
+If the found training data is in a different format (like, pascal VOC or COCO), we can apply the helper scripts included with the sample notebooks to convert the data to JSONL. Learn more about [How to prepare data for computer vision tasks with automated ML](https://learn.microsoft.com/en-us/azure/machine-learning/how-to-prepare-datasets-for-automl-images?view=azureml-api-2).
 
 - **OPTION B: Use Azure ML Labeling for creating our own “fire/smoke" labeled dataset**
 
