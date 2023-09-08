@@ -101,7 +101,7 @@ https://github.com/CESARDELATORRE/wildfire-app-solution-accelerator/tree/main/sr
 
 Additional information about the end to end solution is available at the "MEC Application Solution Accelerator" architecture document, here:
 
-*********** TBD URL to ARCH DOC **************
+["MEC Application Solution Accelerator" architecture WORD document](https://github.com/CESARDELATORRE/wildfire-app-solution-accelerator/blob/main/docs/Architecture%20and%20Design%20of%20MEC%20Solution%20Accelerator.docx)
 
 **Hackers assigned for this task (Python development):**
 - HACKER 1
@@ -116,7 +116,7 @@ https://github.com/CESARDELATORRE/wildfire-app-solution-accelerator/tree/main/sr
 
 Additional information about how to create rules and alerts in the "MEC Application Solution Accelerator" architecture document, here:
 
-*********** TBD URL to ARCH DOC **************
+["MEC Application Solution Accelerator" architecture WORD document](https://github.com/CESARDELATORRE/wildfire-app-solution-accelerator/blob/main/docs/Architecture%20and%20Design%20of%20MEC%20Solution%20Accelerator.docx)
 
 **Hackers assigned for this task (C# development):**
 - HACKER 1
