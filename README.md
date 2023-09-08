@@ -126,7 +126,7 @@ Basically, a similar Python code will need to run within the Python code "ai_inf
 - HACKER 2
 - HACKER 3
 
-### Python: Create a fire/smoke test video and publish is as a Docker container  
+### Python: Create a fire/smoke "inference test video" and publish is as a Docker container  
 
 This is a very simple development task. In order to simulate a video camera sending the video for fire and smoke detection, we need to assemble/create a test video with images about landscape, forest, and quite a few images with fire and smoke.
 Once we have that video (i.e. a .MP4 video), we will wrap it within a Docker container that will publish is as an RTSP url, like if it was a real IP camera with a RTSP url. 
