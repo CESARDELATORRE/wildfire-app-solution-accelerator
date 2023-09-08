@@ -29,7 +29,7 @@ The core of this project is to create an AI Model for detecting fire & smoke and
 
 ![image](https://github.com/CESARDELATORRE/wildfire-app-solution-accelerator/assets/1712635/83f19ee2-60ae-42df-80f9-81ac68f62ff4)
 
-## Teams
+# Sub-Teams
 
 - **AI/ML team:** AI model training and dataset labeling.
 - **Dev team:** Model inference integration in Docker container. Alert rules implementation, etc.
@@ -38,16 +38,91 @@ The core of this project is to create an AI Model for detecting fire & smoke and
 ** TBD - NEED GitHub user accounts for each member in the hackathon project team **
 
 
-## Main tasks
-- Find or create a Labeled fire/smoke images Dataset (For Object Detection)
-- Create AI Model for detecting fire & smoke
-- Create custom “Alert Rules” specific for the “wildfire domain”
+# Main tasks
 
 | | |
 |--------|--------|
-| **AI/ML motion** | - Find or create a Labeled fire/smoke images Dataset (For Object Detection) - Create/Train AI Model for detecting fire & smoke |
-| **Dev motion** | - Integrate AI Model within the AI.Inference Python microservice - Create custom “Alert Rules” specific for the “wildfire domain” |
-| **Story motion**| - Create the "Story narrative" - Record interviews to the members of the project - Edit video and create the final "Project story video" to be provided as our deliverable of the Hackathon.|
+| **1. AI/ML motion** | - 1.1 Find or create a Labeled fire/smoke images Dataset (For Object Detection) - 1.2 Create/Train AI Model for detecting fire & smoke |
+| **2. Dev motion** | - 2.1 Integrate AI Model within the AI.Inference Python microservice - 2.2 Create custom “Alert Rules” specific for the “wildfire domain” |
+| **3. Story motion**| - 3.1 Create the "Story narrative" - 3.2 Record interviews to the members of the project - 3.3 Edit video and create the final "Project story video" to be provided as our deliverable of the Hackathon.|
+
+## Guidelines for AI/ML tasks
+
+### Create AI Model for detecting fire & smoke 
+
+#### Train a new Object Detection model for detecting fire and smoke classes. Possible approaches:
+
+    - Azure Machine Learning AutoML for computer vision models: AutoML automatically does transfer learning from these foundation object detection models: YOLOv5, ResNet, RetinaNet (multiple trainings trying these foundation models with different hyperparameter combinations)
+
+      AutoML computer vision Tutorials: 
+      
+      https://learn.microsoft.com/en-us/azure/machine-learning/how-to-auto-train-image-models?view=azureml-api-2&tabs=cli   
+      
+      https://learn.microsoft.com/en-us/azure/machine-learning/how-to-use-automl-small-object-detect?view=azureml-api-2&tabs=CLI-v2 
+
+    - Custom / low level training with PyTorch, etc.
+
+**Hackers assigned for this task (Using Jupyter notebook, Python and AML SDK):**
+- HACKER 1
+- HACKER 2
+- HACKER 3
+
+#### Create a Labeled fire/smoke images Dataset (For Object Detection)
+
+    - OPTION A: Find an existing “fire/smoke" labeled dataset compatible with AutoML models (JSONL format)
+
+    - OPTION B: Use Azure ML Labeling for creating our own “fire/smoke" labeled dataset
+
+        https://learn.microsoft.com/en-us/azure/machine-learning/how-to-create-image-labeling-projects?view=azureml-api-2 
+
+**Hackers assigned for this task (Images Dataset research OR dataset creation):**
+- HACKER 1
+- HACKER 2
+- HACKER 3
+
+## Guidelines for Dev tasks
+
+### Python: Integrate AI Model within the AI.Inference Python microservice  
+
+Research the code from the "ai_inferencer" microservice in Python so instead of running the current "plain vanilla" YOLO model, it'll run our model for detecting fire/smoke.
+
+https://github.com/CESARDELATORRE/wildfire-app-solution-accelerator/tree/main/src/Services/Detections/ai_inferencer
+
+Additional information about the end to end solution is available at the "MEC Application Solution Accelerator" architecture document, here:
+
+*********** TBD URL to ARCH DOC **************
+
+**Hackers assigned for this task (Python development):**
+- HACKER 1
+- HACKER 2
+- HACKER 3
+
+### .NET C#: Create custom “Alert Rules” specific for the “wildfire domain” in the "Alert Rules" C# microservice.
+
+Research the code from the "Alerts.RuleEngine" microservice to create new Alerts and new Rules in YAML and C#.
+
+https://github.com/CESARDELATORRE/wildfire-app-solution-accelerator/tree/main/src/Services/Alerts/RulesEngine
+
+Additional information about how to create rules and alerts in the "MEC Application Solution Accelerator" architecture document, here:
+
+*********** TBD URL to ARCH DOC **************
+
+**Hackers assigned for this task (C# development):**
+- HACKER 1
+- HACKER 2
+- HACKER 3
+
+
+### Create the story video of our Hackathon project
+
+- Create the "Story narrative"
+- Record interviews to the members of the project
+- Edit video and create the final "Project story video" to be provided as our deliverable of the Hackathon.
+
+**Hackers assigned for this tasks:**
+- HACKER 1
+- HACKER 2
+- HACKER 3
 
 # Getting Started
 
