@@ -100,9 +100,10 @@ If the found training data is in a different format (like, pascal VOC or COCO), 
   https://learn.microsoft.com/en-us/azure/machine-learning/how-to-create-image-labeling-projects?view=azureml-api-2 
 
 **Hackers assigned for this task (Images Dataset research OR dataset creation):**
-- HACKER 1
-- HACKER 2
-- HACKER 3
+- CESARDL
+- Frank Bruno
+- Reza Etemadi
+- Michael Bruhjell
 
 ## Guidelines for Dev tasks
 
@@ -124,8 +125,8 @@ Basically, a similar Python code will need to run within the Python code "ai_inf
 *TIP:* Get started with any example Object Detection model created by AutoML so we can start integrating it in the Solution's Python microservice, so when the final AutoML model is ready, it'll be quick to integrate/deploy it, since it'll be a very similar model from a deployment and inference point of view.
 
 **Hackers assigned for this task (Python development):**
-- HACKER 1
-- HACKER 2
+- Stefan Saramet
+- Reza Etemadi
 - HACKER 3
 
 ### Python: Create a fire/smoke "inference test video" and publish is as a Docker container  
@@ -152,7 +153,7 @@ https://github.com/CESARDELATORRE/wildfire-app-solution-accelerator/tree/main/sr
 Additional information about how to create rules and alerts in the ["MEC Application Solution Accelerator" architecture WORD document](https://github.com/CESARDELATORRE/wildfire-app-solution-accelerator/blob/main/docs/Architecture%20and%20Design%20of%20MEC%20Solution%20Accelerator.docx)
 
 **Hackers assigned for this task (C# development):**
-- HACKER 1
+- Stefan Saramet
 - HACKER 2
 - HACKER 3
 
@@ -169,9 +170,9 @@ For instance, not just detecting fire/smoke but also sending back the related wo
 That would be very useful for firefighters in order to quickly go to the issue's area.
 
 **Hackers assigned for this tasks:**
-- HACKER 1
-- HACKER 2
-- HACKER 3
+- Josh Waagmeester
+- Joram Borenstein
+- Frank Bruno
 
 # Getting Started
 
