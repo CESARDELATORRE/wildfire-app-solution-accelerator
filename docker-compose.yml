@@ -32,6 +32,9 @@ services:
 
   framesplitter:
       image: ${DOCKER_REGISTRY-}framesplitter:0.1
+      build:
+        context: src/Services/Detections/frameSplitter
+        dockerfile: Dockerfile
       depends_on:
         - aiinferencer-dapr
 
