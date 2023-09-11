@@ -84,8 +84,8 @@ https://www.sciencedirect.com/science/article/pii/S2214157X2030085X?via%3Dihub
 https://fireecology.springeropen.com/articles/10.1186/s42408-022-00165-0 
 
 **Hackers assigned for this task (Using Jupyter notebook, Python and AML SDK):**
-- HACKER 1
-- HACKER 2
+- CESARDL
+- Carsten Avenhaus
 - HACKER 3
 
 #### Create a Labeled fire/smoke images Dataset (For Object Detection)
