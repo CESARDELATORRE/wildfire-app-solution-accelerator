@@ -85,8 +85,7 @@ https://fireecology.springeropen.com/articles/10.1186/s42408-022-00165-0
 
 **Hackers assigned for this task (Using Jupyter notebook, Python and AML SDK):**
 - CESARDL
-- Carsten Avenhaus
-- HACKER 3
+
 
 #### Create a Labeled fire/smoke images Dataset (For Object Detection)
 
@@ -103,7 +102,6 @@ If the found training data is in a different format (like, pascal VOC or COCO), 
 - CESARDL
 - Frank Bruno
 - Reza Etemadi
-- Michael Bruhjell
 
 ## Guidelines for Dev tasks
 
@@ -125,9 +123,8 @@ Basically, a similar Python code will need to run within the Python code "ai_inf
 *TIP:* Get started with any example Object Detection model created by AutoML so we can start integrating it in the Solution's Python microservice, so when the final AutoML model is ready, it'll be quick to integrate/deploy it, since it'll be a very similar model from a deployment and inference point of view.
 
 **Hackers assigned for this task (Python development):**
-- Stefan Saramet
 - Reza Etemadi
-- HACKER 3
+- Carsten Avenhaus
 
 ### Python: Create a fire/smoke "inference test video" and publish is as a Docker container  
 
