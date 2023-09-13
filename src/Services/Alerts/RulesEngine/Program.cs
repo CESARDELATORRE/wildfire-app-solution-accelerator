@@ -1,7 +1,5 @@
 using MediatR;
-using Microsoft.MecSolutionAccelerator.Services.Alerts.RulesEngine.Configuration;
 using Microsoft.MecSolutionAccelerator.Services.Alerts.RulesEngine.Injection;
-using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 

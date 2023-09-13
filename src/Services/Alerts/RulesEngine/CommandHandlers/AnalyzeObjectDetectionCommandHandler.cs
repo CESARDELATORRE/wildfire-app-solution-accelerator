@@ -5,7 +5,6 @@ using Microsoft.MecSolutionAccelerator.Services.Alerts.RulesEngine.Commands;
 using Microsoft.MecSolutionAccelerator.Services.Alerts.RulesEngine.Configuration;
 using Microsoft.MecSolutionAccelerator.Services.Alerts.RulesEngine.Events;
 using Microsoft.MecSolutionAccelerator.Services.Alerts.RulesEngine.Events.Base;
-using Newtonsoft.Json;
 
 namespace Microsoft.MecSolutionAccelerator.Services.Alerts.RulesEngine.CommandHandlers
 {

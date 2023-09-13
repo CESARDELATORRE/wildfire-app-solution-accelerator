@@ -4,7 +4,6 @@ using MediatR;
 using SolTechnology.Avro;
 using Microsoft.MecSolutionAccelerator.Services.Alerts.RulesEngine.Events;
 using Microsoft.MecSolutionAccelerator.Services.Alerts.RulesEngine.Commands;
-using Alerts.RulesEngine.Commands;
 
 namespace Microsoft.MecSolutionAccelerator.Services.Alerts.RulesEngine.EventControllers
 {
