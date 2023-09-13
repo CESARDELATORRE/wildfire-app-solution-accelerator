@@ -1,9 +1,5 @@
 ﻿using Alerts.RulesEngine.Commands;
 using Dapr.Client;
-using MediatR;
-using Microsoft.MecSolutionAccelerator.Services.Alerts.RulesEngine.Configuration;
-using Microsoft.MecSolutionAccelerator.Services.Alerts.RulesEngine.Events.Base;
-using Microsoft.MecSolutionAccelerator.Services.Alerts.RulesEngine.Events;
 using SolTechnology.Avro;
 
 namespace Alerts.RulesEngine.CommandHandlers

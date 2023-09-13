@@ -1,9 +1,4 @@
-﻿using MediatR;
-using Microsoft.MecSolutionAccelerator.Services.Alerts.RulesEngine.Configuration;
-using Microsoft.MecSolutionAccelerator.Services.Alerts.RulesEngine.Events;
-using Microsoft.MecSolutionAccelerator.Services.Alerts.RulesEngine.Events.Base;
-
-namespace Alerts.RulesEngine.Commands
+﻿namespace Alerts.RulesEngine.Commands
 {
     public class ValidateAlertCommand : IRequest
     {

@@ -1,5 +1,4 @@
-﻿using MediatR;
-using RulesEngine.Commands.RuleCommands;
+﻿using RulesEngine.Commands.RuleCommands;
 
 namespace RulesEngine.CommandHandlers.RulesCommandHandler
 {

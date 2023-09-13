@@ -1,6 +1,3 @@
-using MediatR;
-using Microsoft.MecSolutionAccelerator.Services.Alerts.RulesEngine.Injection;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

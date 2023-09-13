@@ -1,6 +1,4 @@
-﻿using MediatR;
-using Microsoft.MecSolutionAccelerator.Services.Alerts.RulesEngine.Configuration;
-using System.Data;
+﻿using System.Data;
 using System.Reflection;
 
 namespace Microsoft.MecSolutionAccelerator.Services.Alerts.RulesEngine.Injection
