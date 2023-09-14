@@ -32,11 +32,15 @@ def main(source_id, timestamp, frame, detection_threshold, path, time_trace):
     logging.info(source_id)
 
     ################################################
-    # OLD code to read the image from the frame coming from the network
+    # OLD code to read the image from the frame
 
     # Decode the base64 encoded image
     backToBytes = base64.standard_b64decode(frame)
     img = cv2.imdecode(np.frombuffer(backToBytes, np.uint8), cv2.IMREAD_COLOR)
+
+    # (CDLTLL)
+    # Dimension of the image needed to calculate the bounding boxes coordinates in the right units
+    height, width = img.shape[:2]
 
     val_to_compare_resize,_,_=img.shape
     
@@ -74,7 +78,8 @@ def main(source_id, timestamp, frame, detection_threshold, path, time_trace):
     dir_content = os.listdir(mlflow_model_dir)
     logging.info(f'MLFlow model directory content: {dir_content}')
 
-    ## Load Test Image FILES for testing the model
+    ## NOT NEEDED, WE ARE NOT USING A DATASET WITH IMAGE FILES BUT IMAGE COMING FROM THE STREAMING
+    ## Load Test Image files for testing the model
     #dataset_parent_dir = "./test_images"
     #dataset_name = "odFridgeObjects"
     #
@@ -103,8 +108,116 @@ def main(source_id, timestamp, frame, detection_threshold, path, time_trace):
     # Use the DataFrame for model prediction
     prediction_result = pyfunc_model.predict(test_df)
 
-    logging.info(f'prediction_result: |START|{prediction_result}|END|')
+    logging.info(f'TYPE of prediction_result: {type(prediction_result)}')
+    
+    # Set the display options
+    pd.set_option('display.max_columns', None)  # None means unlimited
+    pd.set_option('display.expand_frame_repr', False)  # Don't wrap to multiple lines
+    pd.set_option('max_colwidth', -1)  # Full column width
 
+    # Now show the full DataFrame
+    logging.info(f'prediction_result CONTENT: |START|{prediction_result}|END|')
+
+    # Reset the display options to default
+    pd.reset_option('display.max_columns')
+    pd.reset_option('display.expand_frame_repr')
+    pd.reset_option('max_colwidth')
+
+    # example_prediction_result_json = '[{"boxes":[{"box":{"topX":0.1843043566,"topY":0.1406233013,"bottomX":0.4368721962,"bottomY":0.6701216698},"label":"carton","score":0.8811187744},{"box":{"topX":0.3369935513,"topY":0.567420125,"bottomX":0.878276062,"bottomY":0.7225573063},"label":"milk_bottle","score":0.7880781889}]}]'
+
+    # Initialize an empty dictionary to store all detections
+    detections = {
+        'xmin': {},
+        'ymin': {},
+        'xmax': {},
+        'ymax': {},
+        'confidence': {},
+        'class': {},
+        'name': {}
+    }
+
+    # Loop over each list in the 'boxes' column
+    for i, boxes in enumerate(prediction_result['boxes']):
+        # Loop over each detection in the list
+        for j, detection in enumerate(boxes):
+            # Add the detection to the detections dictionary
+            detections['xmin'][str(j)] = detection['box']['topX']
+            detections['ymin'][str(j)] = detection['box']['topY']
+            detections['xmax'][str(j)] = detection['box']['bottomX']
+            detections['ymax'][str(j)] = detection['box']['bottomY']
+            detections['confidence'][str(j)] = detection['score']
+            detections['class'][str(j)] = 0  # Assuming class is always 0
+            
+            detections['name'][str(j)] = detection['label']  # Real label name
+            # detections['name'][str(j)] = 'person'  # Faked label name
+
+    # Now detections is a dictionary representing all detections
+    logging.info(f'Detections Dictionary: |START|{detections}|END|')
+
+    if detections["name"]!={}:
+        logging.info(f'Objects Detected')
+        
+        for idx, detection in enumerate(detections["name"].values()):
+            
+            BoundingBoxes=[]
+            
+            if list(detections["confidence"].values())[idx] > detection_threshold:
+                
+                # REAL BOUNDING BOXES
+                # In this object detection models, the output bounding box coordinates are normalized, 
+                # meaning they are given as a proportion of the image's width and height, 
+                # rather than in pixels. The values are typically in the range [0, 1], where (0, 0) 
+                # represents the top-left corner of the image, and (1, 1) represents the bottom-right corner.
+                # Hence, the calculations below are needed to get the real bounding box coordinates in pixels.
+
+                normalized_xmin = list(detections["xmin"].values())[idx]
+                normalized_xmax = list(detections["xmax"].values())[idx]
+                normalized_ymin = list(detections["ymin"].values())[idx]
+                normalized_ymax = list(detections["ymax"].values())[idx]
+
+                xmin =  normalized_xmin * width
+                xmax =  normalized_xmax * width
+                ymin =  normalized_ymin * height
+                ymax =  normalized_ymax * height
+
+                # TEST to see if the y-coordinates are flipped
+                # ymax =  normalized_ymin * height
+                # ymin =  normalized_ymax * height
+
+                # Flip the y-coordinates
+                # ymin = height - ymin
+                # ymax = height - ymax
+
+                # Logging the REAL Bounding Boxes
+                logging.info(f'REAL BOUNDING BOXES: |START|xmin:{xmin},xmax:{xmax},ymin:{ymin},ymax:{ymax}|END|')
+                
+                # FIXED/FAKED BOUNDING BOXES
+                # xmin=273.964263916
+                # xmax=311.4987182617
+                # ymin=36.4909439087
+                # ymax=165.910369873
+                # Logging the FAKED Bounding Boxes
+                # logging.info(f'FAKED BOUNDING BOXES: |START|xmin:{xmin},xmax:{xmax},ymin:{ymin},ymax:{ymax}|END|')
+
+                BoundingBoxes.append({"x": xmin, "y":ymin})
+                BoundingBoxes.append({"x": xmin, "y":ymax})
+                BoundingBoxes.append({"x": xmax, "y":ymin})
+                BoundingBoxes.append({"x": xmax, "y":ymax})
+
+                data["Classes"].append({"EventType": detection, "Confidence":list(detections["confidence"].values())[idx], "BoundingBoxes": BoundingBoxes})
+
+        data['time_trace'].append({"stepStart": timestamp_init, "stepEnd":int(time.time()*1000), "stepName": "ai_inferencer"})
+    
+        schema = avro.schema.Parse(open(path, "rb").read())
+        serializer = AvroJsonSerializer(schema)
+    
+        json_str = serializer.to_json(data)
+
+        # Logging the Event JSON string
+        logging.info(f'Event AVRO JSON string: |START|{json_str}|END|')
+     
+        PublishEvent(pubsub_name="pubsub", topic_name="newDetection", data=json_str)
+        logging.info(f'Event published')
 
     #######################################################################
 
@@ -114,49 +227,49 @@ def main(source_id, timestamp, frame, detection_threshold, path, time_trace):
     # Take only first element
     # detections = json.loads(results.pandas().xyxy[0].to_json())
 
-    # Mocking model with hardcoded detections for testing and getting rid of old model
-    json_string = '{"xmin": {"0": 273.964263916}, "ymin": {"0": 36.4909439087}, "xmax": {"0": 311.4987182617}, "ymax": {"0": 165.910369873}, "confidence": {"0": 0.7896723747}, "class": {"0": 0}, "name": {"0": "person"}}'
-    detections = json.loads(json_string)
+    # # Mocking model with hardcoded detections for testing and getting rid of old model
+    # json_string = '{"xmin": {"0": 273.964263916}, "ymin": {"0": 36.4909439087}, "xmax": {"0": 311.4987182617}, "ymax": {"0": 165.910369873}, "confidence": {"0": 0.7896723747}, "class": {"0": 0}, "name": {"0": "person"}}'
+    # detections = json.loads(json_string)
 
-    logging.info(f'Model inference JSON: |START|{detections}|END|')
+    # logging.info(f'Model inference JSON: |START|{detections}|END|')
     
-    # Tracing the Obj Detection JSON
-    if "name" in detections and detections["name"]:
-        # Access the value of the "name" key
-        name = detections["name"]["0"]
-        print(f"The object detection class name is {name}")
-    else:
-        print("The name key does not exist or is empty")
-    
-    if detections["name"]!={}:
-        logging.info(f'Objects Detected')
-        
-        for idx,detection in enumerate(detections["name"].values()):
-            
-            BoundingBoxes=[]
-            
-            if list(detections["confidence"].values())[idx] > detection_threshold:
-                
-                xmin=list(detections["xmin"].values())[idx]
-                xmax=list(detections["xmax"].values())[idx]
-                ymin=list(detections["ymin"].values())[idx]
-                ymax=list(detections["ymax"].values())[idx]
-                BoundingBoxes.append({"x": xmin, "y":ymin})
-                BoundingBoxes.append({"x": xmin, "y":ymax})
-                BoundingBoxes.append({"x": xmax, "y":ymin})
-                BoundingBoxes.append({"x": xmax, "y":ymax})
-     
-                data["Classes"].append({"EventType": detection, "Confidence":list(detections["confidence"].values())[idx], "BoundingBoxes": BoundingBoxes})
-    
-        data['time_trace'].append({"stepStart": timestamp_init, "stepEnd":int(time.time()*1000), "stepName": "ai_inferencer"})
-        
-        schema = avro.schema.Parse(open(path, "rb").read())
-        serializer = AvroJsonSerializer(schema)
-    
-        json_str = serializer.to_json(data)
-     
-        PublishEvent(pubsub_name="pubsub", topic_name="newDetection", data=json_str)
-        logging.info(f'Event published')
+    # # Tracing the Obj Detection JSON
+    # if "name" in detections and detections["name"]:
+    #     # Access the value of the "name" key
+    #     name = detections["name"]["0"]
+    #     print(f"The object detection class name is {name}")
+    # else:
+    #     print("The name key does not exist or is empty")
+    # 
+    # if detections["name"]!={}:
+    #     logging.info(f'Objects Detected')
+    #     
+    #     for idx,detection in enumerate(detections["name"].values()):
+    #         
+    #         BoundingBoxes=[]
+    #         
+    #         if list(detections["confidence"].values())[idx] > detection_threshold:
+    #             
+    #             xmin=list(detections["xmin"].values())[idx]
+    #             xmax=list(detections["xmax"].values())[idx]
+    #             ymin=list(detections["ymin"].values())[idx]
+    #             ymax=list(detections["ymax"].values())[idx]
+    #            BoundingBoxes.append({"x": xmin, "y":ymin})
+    #             BoundingBoxes.append({"x": xmin, "y":ymax})
+    #             BoundingBoxes.append({"x": xmax, "y":ymin})
+    #             BoundingBoxes.append({"x": xmax, "y":ymax})
+    # 
+    #             data["Classes"].append({"EventType": detection, "Confidence":list(detections["confidence"].values())[idx], "BoundingBoxes": BoundingBoxes})
+    #
+    #     data['time_trace'].append({"stepStart": timestamp_init, "stepEnd":int(time.time()*1000), "stepName": "ai_inferencer"})
+    #    
+    #     schema = avro.schema.Parse(open(path, "rb").read())
+    #     serializer = AvroJsonSerializer(schema)
+    #
+    #     json_str = serializer.to_json(data)
+    # 
+    #     PublishEvent(pubsub_name="pubsub", topic_name="newDetection", data=json_str)
+    #     logging.info(f'Event published')
 
     return 
 
