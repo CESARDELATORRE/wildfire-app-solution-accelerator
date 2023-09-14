@@ -94,7 +94,7 @@ def main(source_id, timestamp, frame, detection_threshold, path, time_trace):
     #)
 
     # Convert the image into a DataFrame with a single row
-    test_df = pd.DataFrame(data=[base64.encodebytes(cv2.imencode('.jpg', img)[1]).decode("utf-8")], columns=["image"])
+    test_df = pd.DataFrame(data=[base64.b64encode(cv2.imencode('.jpg', img)[1]).decode("utf-8")], columns=["image"])
 
     logging.info(f'Test DataFrame shape: {test_df.shape}')
 
