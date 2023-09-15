@@ -57,8 +57,17 @@ Then, watch the video!:)
 
 <img width="1193" alt="image" src="https://github.com/CESARDELATORRE/wildfire-app-solution-accelerator/assets/1712635/f6f6bbbe-ce90-488c-bc04-a1de36902673">
 
+# Stop the RTSP container
 
+It's important to stop and delete the container once you stop it with "Ctrl+C" or closes the terminal window.
+Otherwise, you'll get an error when trying to start it again.
 
+In order to stop and clean it up, run this script:
+
+```powershell
+./stop-remove-streamer-container.ps1
+```
+After this clean-up step, you can start the steps above again, later on.
 
 
 
