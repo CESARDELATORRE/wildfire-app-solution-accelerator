@@ -6,16 +6,23 @@ using System.Numerics;
 using MediatR;
 using Microsoft.MecSolutionAccelerator.Services.Alerts.API.Injection;
 
+using Microsoft.Extensions.Logging;
+
 namespace Microsoft.MecSolutionAccelerator.Services.Alerts.CommandHandlers
 {
     public class PaintBoundingBoxesCommandHandler : IRequestHandler<PaintBoundingBoxesCommand, string>
     {
         private readonly BoundingBoxesColorBrushes _colorsBrushesConfiguration;
+
+        //(CDLTLL) For getting the logger with Dependency Injection
+        private readonly ILogger<PaintBoundingBoxesCommandHandler> _logger;
+
         private const int maxwidth = 1920;
         private const int maxheight = 1080;
-        public PaintBoundingBoxesCommandHandler(BoundingBoxesColorBrushes colorsBrushesConfiguration)
+        public PaintBoundingBoxesCommandHandler(BoundingBoxesColorBrushes colorsBrushesConfiguration, ILogger<PaintBoundingBoxesCommandHandler> logger)
         {
             _colorsBrushesConfiguration = colorsBrushesConfiguration ?? throw new ArgumentNullException(nameof(colorsBrushesConfiguration));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
         public async Task<string> Handle(PaintBoundingBoxesCommand request, CancellationToken cancellationToken)
@@ -44,6 +51,17 @@ namespace Microsoft.MecSolutionAccelerator.Services.Alerts.CommandHandlers
                 foreach(var matchingClass in matchingClasses)
                 {
                     var colorDefault = _colorsBrushesConfiguration.GetColorByClass(matchingClass.EventType);
+
+                    // Logging for debugging
+                    //_logger.LogInformation("********************************************************");
+                    //_logger.LogInformation("********************************************************");
+                    //_logger.LogInformation("********************************************************");
+                    //_logger.LogInformation("******* C# ALERTS.API Bounding Box Coordinates: ********");
+                    //_logger.LogInformation("Top Left: {0}, {1}", matchingClass.BoundingBoxes[0].x, matchingClass.BoundingBoxes[0].y);
+                    //_logger.LogInformation("Top Right: {0}, {1}", matchingClass.BoundingBoxes[1].x, matchingClass.BoundingBoxes[1].y);
+                    //_logger.LogInformation("Bottom Left: {0}, {1}", matchingClass.BoundingBoxes[2].x, matchingClass.BoundingBoxes[2].y);
+                    //_logger.LogInformation("Bottom Right: {0}, {1}", matchingClass.BoundingBoxes[3].x, matchingClass.BoundingBoxes[3].y);
+                    //_logger.LogInformation("******* END of C# ALERTS.API Bounding Box Coordinates: ********");
 
                     firstLane[0] = new Vector2(matchingClass.BoundingBoxes[0].x, matchingClass.BoundingBoxes[0].y);
                     firstLane[1] = new Vector2(matchingClass.BoundingBoxes[1].x, matchingClass.BoundingBoxes[1].y);

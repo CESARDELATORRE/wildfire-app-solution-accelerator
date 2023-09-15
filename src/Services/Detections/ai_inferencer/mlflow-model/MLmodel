@@ -3,11 +3,11 @@ flavors:
   python_function:
     artifacts:
       model:
-        path: artifacts/_model_impl_imqjlwku.pt
-        uri: /mnt/azureml/cr/j/4797658145214eb8bf9bf19350cd11f3/exe/wd/_model_impl_imqjlwku.pt
+        path: artifacts/_model_impl_bt1mor1d.pt
+        uri: /mnt/azureml/cr/j/6af5e0a2d726422d8d01eb969b231497/exe/wd/_model_impl_bt1mor1d.pt
       settings:
         path: artifacts/settings.json
-        uri: /mnt/azureml/cr/j/4797658145214eb8bf9bf19350cd11f3/exe/wd/tmpkyohoc_7/settings.json
+        uri: /mnt/azureml/cr/j/6af5e0a2d726422d8d01eb969b231497/exe/wd/tmpai53l_6t/settings.json
     cloudpickle_version: 2.2.1
     env:
       conda: conda.yaml
@@ -19,9 +19,9 @@ metadata:
   azureml.base_image: mcr.microsoft.com/azureml/curated/azureml-automl-dnn-vision-gpu:118
   azureml.engine: automl
 mlflow_version: 2.4.1
-model_uuid: 49793875ad19457f9916e22e292d4bac
-run_id: mighty_oyster_6z5zrqgnjm_HD_0
+model_uuid: fd11b45f05f244a3b7bd3be0426985b6
+run_id: silly_ghost_q752r0lvqh_HD_2
 signature:
   inputs: '[{"type": "binary", "name": "image"}]'
   outputs: '[{"type": "string", "name": "boxes"}]'
-utc_time_created: '2023-09-10 18:24:00.643665'
+utc_time_created: '2023-09-14 20:27:03.262495'

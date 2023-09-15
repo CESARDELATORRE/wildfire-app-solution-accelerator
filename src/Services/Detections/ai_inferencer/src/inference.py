@@ -22,17 +22,11 @@ def read_image(image_path):
     with open(image_path, "rb") as f:
         return f.read()       
 
-# OLD function definition with OLD model
-# def main(source_id, timestamp, model, frame, detection_threshold, path, time_trace):
-
 # New function with no model parameter, but faking it.
 def main(source_id, timestamp, frame, detection_threshold, path, time_trace):
     timestamp_init=int(time.time()*1000)
     logging.basicConfig(level=logging.DEBUG)
     logging.info(source_id)
-
-    ################################################
-    # OLD code to read the image from the frame
 
     # Decode the base64 encoded image
     backToBytes = base64.standard_b64decode(frame)
@@ -44,14 +38,17 @@ def main(source_id, timestamp, frame, detection_threshold, path, time_trace):
 
     val_to_compare_resize,_,_=img.shape
     
-    if val_to_compare_resize>576:
-        logging.info(f'Resizing to print')
-        dim = (720,576)
-        img= cv2.resize(img, dim, interpolation = cv2.INTER_AREA)
-        frame_resized = cv2.imencode(".jpg", img)[1]
-        frame_to_bytes=frame_resized.tobytes()
-        frame = base64.standard_b64encode(frame_to_bytes)
-        frame = frame.decode()
+    # (CDLTLL)
+    # if val_to_compare_resize>576:
+    #     logging.info(f'Resizing to print')
+    #     dim = (720,576)
+    #     img= cv2.resize(img, dim, interpolation = cv2.INTER_AREA)
+    #     frame_resized = cv2.imencode(".jpg", img)[1]
+    #     frame_to_bytes=frame_resized.tobytes()
+    #     frame = base64.standard_b64encode(frame_to_bytes)
+    #     frame = frame.decode()
+    # (CDLTLL)
+    #     height, width = img.shape[:2]
 
     data = { "SourceId":source_id,
     "UrlVideoEncoded": "1.0",
