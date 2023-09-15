@@ -4,7 +4,7 @@ $rtsp_host="localhost"
 $rtsp_uri="video"
 
 
-$containterImage="mecsolutionaccelerator/rtsp-video-streamer:1.0"
+$containterImage="wildfireaccelerator/rtsp-video-streamer:1.0"
 
 docker pull $containterImage
 
@@ -13,7 +13,7 @@ docker run -it --name ${rtsp_name} -p ${rtsp_port}:${rtsp_port} -e RTSP_HOST=${r
 
 ######################################################################################################################################################################
 # Example with no variables:
-# docker run -it --name rtsp-streamer-container -p 8554:8554 -e RTSP_HOST=localhost -e RTSP_PORT=8554 -e RTSP_URI=video mecsolutionaccelerator/rtsp-video-streamer:1.0
+# docker run -it --name rtsp-streamer-container -p 8554:8554 -e RTSP_HOST=localhost -e RTSP_PORT=8554 -e RTSP_URI=video wildfireaccelerator/rtsp-video-streamer:1.0
 
 
 ######################################################################################################################################################################
