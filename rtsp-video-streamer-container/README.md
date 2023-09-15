@@ -28,20 +28,16 @@ You will see the following output:
 ```powershell
 > .\run-streamer-local.ps1
 
-Environment: server_ip 127.0.0.1, server_port 8554, uri video
-Example full URI: rtsp://127.0.0.1:8554/video
+Environment: server_ip <YOUR_IP>, server_port 8554, uri video
+Example full URI: rtsp://<YOUR_IP>:8554/video
 ```
+<img width="1171" alt="image" src="https://github.com/CESARDELATORRE/wildfire-app-solution-accelerator/assets/1712635/9afbfa94-488a-4606-aeef-2d8944be34c8">
 
-Take note or copy the RTSP url above.
-You can use the local IP, or localhost or your real network adapter IP.
+Take note or copy the RTSP url above, like:
 
-```
-rtsp://127.0.0.1:8554/video
+rtsp://<YOUR_IP>:8554/video
 
-rtsp://localhost:8554/video
-
-rtsp://my_IP:8554/video
-```
+**IMPORTANT:** Note that if you try to use `localhost` or `127.0.0.1` from the Application in Docker, by default it wont work because the Docker containers won't be able to reach `localhost` or `127.0.0.1` but only the real IP of your network adapter in use.
 
 ## 5. Test the RTSP streaming with 
 
@@ -53,8 +49,13 @@ https://apps.microsoft.com/store/detail/vlc/XPDM1ZW6815MQM
 B. Videolan.org
 https://www.videolan.org/vlc/index.wa.html
 
+Run VLC media player and open the RTSP url:
 
-Run VLC media player and open the RTSP url and watch the video.
+<img width="1189" alt="image" src="https://github.com/CESARDELATORRE/wildfire-app-solution-accelerator/assets/1712635/1aeb8f7b-7fc7-468e-b2c9-6cedb6dce0ee">
+
+Then, watch the video!:)
+
+<img width="1193" alt="image" src="https://github.com/CESARDELATORRE/wildfire-app-solution-accelerator/assets/1712635/f6f6bbbe-ce90-488c-bc04-a1de36902673">
 
 
 
