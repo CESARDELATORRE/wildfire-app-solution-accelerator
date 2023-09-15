@@ -8,6 +8,19 @@ gi.require_version("GstRtspServer", "1.0")
 
 from gi.repository import GLib, Gst, GstRtspServer
 
+def get_network_adapter_ip_address():
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    try:
+        # Try a connection to determine the preferred outgoing IP address of your system.
+        # It doesn't even have to be reachable
+        s.connect(('10.255.255.255', 1))
+        IP = s.getsockname()[0]
+    except Exception:
+        IP = '127.0.0.1'
+    finally:
+        s.close()
+    return IP
+
 # Get params from environment
 HOST_ENV_VAR="RTSP_HOST"
 PORT_ENV_VAR="RTSP_PORT"
@@ -16,13 +29,26 @@ USERNAME_ENV_VAR="RTSP_USERNAME"
 PASSWORD_ENV_VAR="RTSP_PASSWORD"
 
 # globals from environment variables
-server_ip = socket.gethostbyname(os.environ.get(HOST_ENV_VAR))
+
+# (CDLTLL) Get the real network adapter IP to use by the RTSP remote client. 
+server_ip = get_network_adapter_ip_address()
+
+# (CDLTLL) This would return 127.0.0.1, which is the Docker Host IP, not reacheable from remote client.
+# server_ip = socket.gethostbyname(os.environ.get(HOST_ENV_VAR))
+
 server_port = os.environ.get(PORT_ENV_VAR)
 uri = os.environ.get(URI_ENV_VAR)
 
-print(f"Environment: server_ip {server_ip}, server_port {server_port}, uri {uri}")
+print(f"\n\nEnvironment: server_ip {server_ip}, server_port {server_port}, uri {uri}")
 
-print(f"Example full URI: rtsp://{server_ip}:{server_port}/{uri}")
+print(f"\nExample full URI: rtsp://{server_ip}:{server_port}/{uri}")
+
+print(
+    "\nIMPORTANT: If that IP doesn't work for you, try with the IP of the "
+    "network adapter that is connected to the same network as the RTSP remote client. "
+    "For example, if you are using a WiFi adapter, try with the IP of the WiFi adapter."
+    "In Windows, check your real network adapter IPs with the command: ipconfig /all.\n\n"
+)
 
 # Globals for client connections (assumes single connection)
 client_ip = ""

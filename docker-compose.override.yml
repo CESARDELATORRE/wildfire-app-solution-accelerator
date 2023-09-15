@@ -25,9 +25,8 @@ services:
   framesplitter:
     environment:
     - TIMEOUT=15
-    #- FEED=rtsp://20.42.105.26:8554/mystream
-    #- FEED=../Datasets/demo.mp4
-    - FEED=../Datasets/PerimeterDemo.mp4
+    #- FEED=rtsp://192.168.0.1:8554/video
+    - FEED=../Datasets/video.mp4
     ports:
     - "57090"
 

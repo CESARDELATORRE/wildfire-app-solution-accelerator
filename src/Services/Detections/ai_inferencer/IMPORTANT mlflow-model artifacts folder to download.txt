@@ -1,0 +1,47 @@
+IMPORTANT NOTE:
+
+The model file "_model_impl_imqjlwku.pt" within the mlflow-model/artifacts folder is too big to be uploaded into GitHub.
+Additionally, the artifacts folder is ignored on purpose in the .gitignore file, so it won't upload the "artifacts" folder into the GitHub repo.
+
+If we try to force it and commit/push it, we get this error:
+
+> git push origin cesardl/ai-model-integration:cesardl/ai-model-integration
+remote: error: Trace: 0638581c1575cdaf69c84a145a81c5dfaa6a67e6f937f8183fd211632e2828c5        
+remote: error: See https://gh.io/lfs for more information.        
+remote: error: File src/Services/Detections/ai_inferencer/mlflow-model/artifacts/_model_impl_imqjlwku.pt is 164.41 MB; this exceeds GitHub's file size limit of 100.00 MB        
+remote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.        
+To github.com:CESARDELATORRE/wildfire-app-solution-accelerator.git
+! [remote rejected] cesardl/ai-model-integration -> cesardl/ai-model-integration (pre-receive hook declined)
+error: failed to push some refs to 'github.com:CESARDELATORRE/wildfire-app-solution-accelerator.git'
+
+
+****** SOLUTION ******
+
+Downlaod the mlflow-model/artifacts folder (or the whole mlflow-model folder) from the following ONE DRIVE and copy it within your cloned repo code at the "src/Services/Detections/ai_inferencer" project:
+
+ONE DRIVE:
+https://1drv.ms/f/s!Ag33_uWyTcH5p7so5rxYcrjqaSnP7g?e=hL3IV1
+
+Basically the structure within the "src/Services/Detections/ai_inferencer" project should be this:
+
+mlflow-model folder
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----         9/13/2023  12:47 PM                artifacts
+-a----         9/11/2023  10:12 AM           6316 conda.yaml
+-a----         9/11/2023  11:07 AM           6229 conda_FOR_WINDOWS.yaml
+-a----         9/12/2023   5:10 PM            243 conda_SLIM.yaml
+-a----         9/11/2023  10:12 AM            974 MLmodel
+-a----         9/11/2023  10:47 PM            122 python_env.yaml
+-a----         9/11/2023  10:12 AM            453 python_model.pkl
+-a----         9/11/2023  10:12 AM           4006 requirements.txt
+
+mlflow-model\artifacts
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         9/12/2023   7:43 PM            178 settings.json
+-a----         9/12/2023   7:44 PM      172392687 _model_impl_imqjlwku.pt
+
+
