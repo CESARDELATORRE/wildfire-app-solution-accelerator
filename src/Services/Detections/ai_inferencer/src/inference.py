@@ -13,7 +13,6 @@ import pandas as pd
 # import base64
 import mlflow.pyfunc
 
-
 def PublishEvent (pubsub_name: str, topic_name: str, data: json):
     with DaprClient() as client:
         resp = client.publish_event(pubsub_name=pubsub_name, topic_name=topic_name, data=data, data_content_type='application/json')
@@ -32,23 +31,22 @@ def main(source_id, timestamp, frame, detection_threshold, path, time_trace):
     backToBytes = base64.standard_b64decode(frame)
     img = cv2.imdecode(np.frombuffer(backToBytes, np.uint8), cv2.IMREAD_COLOR)
 
-    # (CDLTLL)
-    # Dimension of the image needed to calculate the bounding boxes coordinates in the right units
-    height, width = img.shape[:2]
-
-    val_to_compare_resize,_,_=img.shape
-    
-    # (CDLTLL)
+    # (CDLTLL) This tunning needs to be confirmed before using it
+    # Resize the image to a fixed size to the model's input size so performance increases
+    # val_to_compare_resize,_,_=img.shape
     # if val_to_compare_resize>576:
-    #     logging.info(f'Resizing to print')
+    #     logging.info(f'Resizing to fit model's input size so performance increases')
     #     dim = (720,576)
     #     img= cv2.resize(img, dim, interpolation = cv2.INTER_AREA)
     #     frame_resized = cv2.imencode(".jpg", img)[1]
     #     frame_to_bytes=frame_resized.tobytes()
     #     frame = base64.standard_b64encode(frame_to_bytes)
     #     frame = frame.decode()
+
     # (CDLTLL)
-    #     height, width = img.shape[:2]
+    # Dimension of the image needed to calculate the bounding boxes coordinates in the right units
+    # Need to get it after the possible image resize, otherwise the coordinates will be wrong positioned
+    height, width = img.shape[:2]
 
     data = { "SourceId":source_id,
     "UrlVideoEncoded": "1.0",
@@ -75,7 +73,8 @@ def main(source_id, timestamp, frame, detection_threshold, path, time_trace):
     dir_content = os.listdir(mlflow_model_dir)
     logging.info(f'MLFlow model directory content: {dir_content}')
 
-    ## NOT NEEDED, WE ARE NOT USING A DATASET WITH IMAGE FILES BUT IMAGE COMING FROM THE STREAMING
+    ## JUST FOR TESTING BUT NOT NEEDED, WE ARE NOT USING A DATASET WITH IMAGE FILES 
+    # BUT AN IMAGE COMING FROM THE STREAMING/NETWORK
     ## Load Test Image files for testing the model
     #dataset_parent_dir = "./test_images"
     #dataset_name = "odFridgeObjects"
@@ -177,14 +176,6 @@ def main(source_id, timestamp, frame, detection_threshold, path, time_trace):
                 ymin =  normalized_ymin * height
                 ymax =  normalized_ymax * height
 
-                # TEST to see if the y-coordinates are flipped
-                # ymax =  normalized_ymin * height
-                # ymin =  normalized_ymax * height
-
-                # Flip the y-coordinates
-                # ymin = height - ymin
-                # ymax = height - ymax
-
                 # Logging the REAL Bounding Boxes
                 logging.info(f'REAL BOUNDING BOXES: |START|xmin:{xmin},xmax:{xmax},ymin:{ymin},ymax:{ymax}|END|')
                 
@@ -211,62 +202,10 @@ def main(source_id, timestamp, frame, detection_threshold, path, time_trace):
         json_str = serializer.to_json(data)
 
         # Logging the Event JSON string
-        logging.info(f'Event AVRO JSON string: |START|{json_str}|END|')
+        # logging.info(f'Event AVRO JSON string: |START|{json_str}|END|')
      
         PublishEvent(pubsub_name="pubsub", topic_name="newDetection", data=json_str)
         logging.info(f'Event published')
-
-    #######################################################################
-
-    # OLD Model inference
-    # results = model(img)
-    # logging.info(f'Model inference results: |START|{results}|END|')
-    # Take only first element
-    # detections = json.loads(results.pandas().xyxy[0].to_json())
-
-    # # Mocking model with hardcoded detections for testing and getting rid of old model
-    # json_string = '{"xmin": {"0": 273.964263916}, "ymin": {"0": 36.4909439087}, "xmax": {"0": 311.4987182617}, "ymax": {"0": 165.910369873}, "confidence": {"0": 0.7896723747}, "class": {"0": 0}, "name": {"0": "person"}}'
-    # detections = json.loads(json_string)
-
-    # logging.info(f'Model inference JSON: |START|{detections}|END|')
-    
-    # # Tracing the Obj Detection JSON
-    # if "name" in detections and detections["name"]:
-    #     # Access the value of the "name" key
-    #     name = detections["name"]["0"]
-    #     print(f"The object detection class name is {name}")
-    # else:
-    #     print("The name key does not exist or is empty")
-    # 
-    # if detections["name"]!={}:
-    #     logging.info(f'Objects Detected')
-    #     
-    #     for idx,detection in enumerate(detections["name"].values()):
-    #         
-    #         BoundingBoxes=[]
-    #         
-    #         if list(detections["confidence"].values())[idx] > detection_threshold:
-    #             
-    #             xmin=list(detections["xmin"].values())[idx]
-    #             xmax=list(detections["xmax"].values())[idx]
-    #             ymin=list(detections["ymin"].values())[idx]
-    #             ymax=list(detections["ymax"].values())[idx]
-    #            BoundingBoxes.append({"x": xmin, "y":ymin})
-    #             BoundingBoxes.append({"x": xmin, "y":ymax})
-    #             BoundingBoxes.append({"x": xmax, "y":ymin})
-    #             BoundingBoxes.append({"x": xmax, "y":ymax})
-    # 
-    #             data["Classes"].append({"EventType": detection, "Confidence":list(detections["confidence"].values())[idx], "BoundingBoxes": BoundingBoxes})
-    #
-    #     data['time_trace'].append({"stepStart": timestamp_init, "stepEnd":int(time.time()*1000), "stepName": "ai_inferencer"})
-    #    
-    #     schema = avro.schema.Parse(open(path, "rb").read())
-    #     serializer = AvroJsonSerializer(schema)
-    #
-    #     json_str = serializer.to_json(data)
-    # 
-    #     PublishEvent(pubsub_name="pubsub", topic_name="newDetection", data=json_str)
-    #     logging.info(f'Event published')
 
     return 
 
