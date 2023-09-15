@@ -1,5 +1,5 @@
-FROM mcr.microsoft.com/azureml/curated/azureml-automl-dnn-vision-gpu:121
-# FROM python:3.8.16-slim-bullseye
+# FROM mcr.microsoft.com/azureml/curated/azureml-automl-dnn-vision-gpu:121
+FROM python:3.8.16-slim-bullseye
 
 # Copy requirements.txt and conda.yaml files to the container
 COPY requirements.txt ./
@@ -38,6 +38,12 @@ RUN pip3 install opencv-python-headless
 # RUN echo "conda activate project_environment" > ~/.bashrc
 
 # ENV PATH /opt/conda/envs/project_environment/bin:$PATH
+
+RUN apt-get update && apt-get -y install gcc cython3
+RUN pip install cython
+RUN pip install pycocotools==2.0.6
+COPY ./mlflow-model/requirements.txt ./mlflow-model/
+RUN pip3 install -r ./mlflow-model/requirements.txt
 
 COPY . .
 
