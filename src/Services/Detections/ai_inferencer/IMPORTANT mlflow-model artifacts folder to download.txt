@@ -1,6 +1,6 @@
 IMPORTANT NOTE:
 
-The model file "_model_impl_imqjlwku.pt" within the mlflow-model/artifacts folder is too big to be uploaded into GitHub.
+The model file "mlflow-model/artifacts/_model_impl_bt1mor1d.pt" (or similar name) is too big to be uploaded into GitHub.
 Additionally, the artifacts folder is ignored on purpose in the .gitignore file, so it won't upload the "artifacts" folder into the GitHub repo.
 
 If we try to force it and commit/push it, we get this error:

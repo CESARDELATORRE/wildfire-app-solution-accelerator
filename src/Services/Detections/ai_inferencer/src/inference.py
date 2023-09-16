@@ -31,7 +31,7 @@ def main(source_id, timestamp, frame, detection_threshold, path, time_trace):
     backToBytes = base64.standard_b64decode(frame)
     img = cv2.imdecode(np.frombuffer(backToBytes, np.uint8), cv2.IMREAD_COLOR)
 
-    # (CDLTLL) This tunning needs to be confirmed before using it
+    # (CDLTLL) This optimization/tunning needs to be confirmed before using it
     # Resize the image to a fixed size to the model's input size so performance increases
     # val_to_compare_resize,_,_=img.shape
     # if val_to_compare_resize>576:
@@ -60,8 +60,8 @@ def main(source_id, timestamp, frame, detection_threshold, path, time_trace):
     }
     data['time_trace'].append(time_trace)
 
-    #######################################################################
-    # NEW Model inference
+    #############################################################################
+    # Model inference with AutoML computer vision model expoerted as MLFlow model
 
     # Local dir where you have downloaded and saved the artifacts
     local_dir = "."
@@ -77,7 +77,7 @@ def main(source_id, timestamp, frame, detection_threshold, path, time_trace):
     # BUT AN IMAGE COMING FROM THE STREAMING/NETWORK
     ## Load Test Image files for testing the model
     #dataset_parent_dir = "./test_images"
-    #dataset_name = "odFridgeObjects"
+    #dataset_name = "smoke_test_dataset"
     #
     #test_image_paths = [
     #    os.path.join(dataset_parent_dir, dataset_name, "images", "1.jpg")
