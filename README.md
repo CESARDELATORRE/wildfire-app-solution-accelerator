@@ -80,7 +80,7 @@ In order to test your own scenarios you might want to try the following operatio
 | <img width="140" alt="image" src="https://user-images.githubusercontent.com/1712635/220490921-dc521a14-3f0a-481f-8179-7233a744dbc1.png"> | **[How to create a container with RTSP simulating a camera](/rtsp-video-streamer-container/)** |
 
 
-# Configurations for easy customization
+# Application running
 
 Here's a screenshot of the end to end application working by inferencing video coming from a "remote" container publishing a RTSP video (simulating an IP camera) and then detecting smoke from fire and hence raising the Alerts in the application dashboard:
 
